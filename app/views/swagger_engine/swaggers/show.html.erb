@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Swagger UI</title>
+  <title>TPaga API PlayGround</title>
   <%#= favicon_link_tag 'favicon-32x32.png', rel: 'icon', type: 'image/png', sizes: '32x32' %>
   <%#= favicon_link_tag 'favicon-16x16.png', rel: 'icon', type: 'image/png', sizes: '16x16' %>
 
@@ -25,13 +25,12 @@
         supportedSubmitMethods: ['get', 'post', 'put', 'delete', 'patch'],
         onComplete: function(swaggerApi, swaggerUi){
           if(typeof initOAuth == "function") {
-            initOAuth({
-              clientId: "your-client-id",
-              realm: "your-realms",
-              appName: "your-app-name"
-            });
+//            initOAuth({
+//              clientId: "your-client-id",
+//              realm: "your-realms",
+//              appName: "your-app-name"
+//            });
           }
-
           $('pre code').each(function(i, e) {
             hljs.highlightBlock(e)
           });
@@ -45,22 +44,22 @@
         sorter : "alpha"
       });
 
-      function addApiKeyAuthorization(){
+      function addApiKeyAuthorization() {
         var key = encodeURIComponent($('#input_apiKey')[0].value);
+        log("key: " + key);
         if(key && key.trim() != "") {
-            var apiKeyAuth = new SwaggerClient.ApiKeyAuthorization("api_key", key, "query");
-            window.swaggerUi.api.clientAuthorizations.add("api_key", apiKeyAuth);
-            log("added key " + key);
+          var apiKeyAuth = new SwaggerClient.PasswordAuthorization("api_key", key, "");
+          window.swaggerUi.api.clientAuthorizations.add("api_key", apiKeyAuth);
+          log("added key " + key);
         }
       }
 
       $('#input_apiKey').change(addApiKeyAuthorization);
 
       // if you have an apiKey you would like to pre-populate on the page for demonstration purposes...
-      /*
-        var apiKey = "myApiKeyXXXX123456789";
+
+        var apiKey = "d13fr8n7vhvkuch3lq2ds5qhjnd2pdd2";
         $('#input_apiKey').val(apiKey);
-      */
 
       window.swaggerUi.load();
 
