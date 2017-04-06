@@ -81,7 +81,7 @@
       <div class='input'><input placeholder="api_key" id="input_apiKey" name="apiKey" type="text"/></div>
       <div class='input'><a id="explore" href="#">Explore</a></div>
       <div class='input'>
-        <% editurl = "http://editor.swagger.io/#/?import=https://tpaga.co/#{asset_path("swagger_engine/#{@swagger_json_url}")}" %>
+        <% editurl = "http://editor.swagger.io/#!/?import=https://tpaga.co/#{asset_path("swagger_engine/#{@swagger_json_url}")}" %>
         <%= link_to("online editor", editurl, target: :blank) %>
       </div>
     </form>
